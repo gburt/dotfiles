@@ -1,0 +1,6 @@
+[alias]
+    hash = rev-parse HEAD
+
+[user]
+    name = Liyan David Chang
+    email = dchang@devoted.com
