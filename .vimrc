@@ -24,6 +24,7 @@ set laststatus=2                " Show Status Line Always
 syntax on
 set textwidth=78
 set tabstop=4
+set shiftwidth=4
 set bg=dark                     " Vi colors break if they don't know your background
 
 " Scrolling

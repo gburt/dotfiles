@@ -1,4 +1,4 @@
-# Source Bashrc
+# Source bashrc
 [ -r $HOME/.bashrc ] && source $HOME/.bashrc
 
 # Git Aliases
@@ -20,9 +20,14 @@ alias home='cd ~'
 
 # Bash Prompt
 parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 export PS1="\u \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+	source /usr/share/bash-completion/bash_completion
+
 
 # Always use vi
 export EDITOR=vim
@@ -30,5 +35,7 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 alias vi='vim'
 
-# Always start me in tmux
-tmux attach -t work || tmux new-session -s work
+# If not in a tmux session, attach or create a tmux session
+if [ -z "$TMUX" ]; then
+	tmux attach -t work || tmux new-session -s work
+fi
