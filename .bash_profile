@@ -1,5 +1,5 @@
-
-# Aliases
+# Source Bashrc
+[ -r $HOME/.bashrc ] && source $HOME/.bashrc
 
 # Git Aliases
 alias g='git'
@@ -24,8 +24,11 @@ parse_git_branch() {
 }
 export PS1="\u \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-# Use vi
+# Always use vi
 export EDITOR=vim
 export GIT_EDITOR=vim
 export VISUAL=vim
 alias vi='vim'
+
+# Always start me in tmux
+tmux attach -t work || tmux new-session -s work
