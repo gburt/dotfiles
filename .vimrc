@@ -1,10 +1,5 @@
 " Configuration for Vim
 
-set viminfo="NONE"
-syntax on
-set tw=72
-
-
 " File Handling
 set autoread                    " Reload buffer when file modified externally
 set clipboard=unnamed           " Yank and paste using system clipboard
@@ -24,6 +19,12 @@ set cmdheight=1                 " Command Line Height
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set laststatus=2                " Show Status Line Always
+
+" Whitespace and syntax
+syntax on
+set textwidth=78
+set tabstop=4
+set bg=dark                     " Vi colors break if they don't know your background
 
 " Scrolling
 set scrolloff=3                 " Keep minimal number of lines above/below cursor
@@ -46,6 +47,7 @@ map <space> /
 map <c-space> ?
 
 " History
+set viminfo="NONE"              " Don't store history in a long-lived file
 set history=1000                " How many lines of history to keep
 set undolevels=1000             " Max number of undos
 " Shift U redos
@@ -58,33 +60,30 @@ set wildignore+=*.zip,*.tar.gz  " Ignore compressed archives
 set wildignore+=*.git,*.svn     " Ignore code repos
 
 " Line Wrapping
-set nowrap                      " Don't wrap text
+set wrap                        " Wrap text
 set whichwrap+=<,>,h,l,[,]      " Have h, l wrap lines
-set textwidth=78                " Set the text width
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
 " Split Screen
 set splitright                  " Place new window on the right
-nmap nm :vsplit<CR>
-nmap nj :split<CR>
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nmap w% :vsplit<CR>
+nmap w" :split<CR>
+nmap wh <C-w>h
+nmap wj <C-w>j
+nmap wk <C-w>k
+nmap wl <C-w>l
 
 " Tab management
 nmap tt :tabnew .<CR>
-nmap tk :tabnext<CR>
+nmap th :tabprevious<CR>
 nmap tj :tabprevious<CR>
-
-" Syntax Highlighting
-syntax on                       " Turn on syntax highlighting
+nmap tk :tabnext<CR>
+nmap tl :tabnext<CR>
 
 " Modifier Keys
 set backspace=indent,eol,start
-let mapleader = ","             " Setting leader
 " Use semicolon for colon
 nmap ; :
 vmap ; :
@@ -97,10 +96,10 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 " Extending the power of the home row nav
-nmap J <C-D>
-nmap K <C-U>
-nmap H b
-nmap L w
+nnoremap J <C-D>
+nnoremap K <C-U>
+nnoremap H b
+nnoremap L w
 
 " Merge lines with +
 noremap + J
@@ -111,16 +110,15 @@ vmap E B
 nmap e b
 nmap E B
 
-" Use ii for exit
+" Double keys for esc, save, exit
 map ii <Esc>
 imap ii <Esc>
 cmap ii <ESC>
 nmap ss :w<CR>
-cmap w!! w !sudo tee >/dev/null %
-nmap SS :w !sudo tee % >/dev/null<CR>
 nmap qq :wq<CR>
-nmap QQ :wqall<CR>
 nmap cc :q!<CR>
+" So cc works on directory listings
+autocmd filetype netrw noremap <buffer> cc :q!<CR>
 
 " Insert new lines
 map <S-Enter> O<Esc>j
