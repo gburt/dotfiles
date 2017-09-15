@@ -30,6 +30,8 @@ set bg=dark                     " Vi colors break if they don't know your backgr
 " Scrolling
 set scrolloff=3                 " Keep minimal number of lines above/below cursor
 set sidescroll=3                " Scroll sideways 3 characters at a time
+" Unset mouse support as it makes tmux + vi do all sorts of crazy right now.
+"set mouse=a                     " Set mouse mode in all
 
 " Errors
 set noerrorbells                " No beeping
@@ -69,19 +71,14 @@ map k gk
 
 " Split Screen
 set splitright                  " Place new window on the right
-nmap w% :vsplit<CR>
-nmap w" :split<CR>
-nmap wh <C-w>h
-nmap wj <C-w>j
-nmap wk <C-w>k
-nmap wl <C-w>l
+nmap <C-w>s :vsplit<CR>
+nmap <C-w>w :split<CR>
 
 " Tab management
-nmap tt :tabnew .<CR>
-nmap th :tabprevious<CR>
-nmap tj :tabprevious<CR>
-nmap tk :tabnext<CR>
+nmap <C-t>t :tabnew .<CR>
+nmap <C-t>c :tabclose<CR>
 nmap tl :tabnext<CR>
+nmap th :tabprevious<CR>
 
 " Modifier Keys
 set backspace=indent,eol,start
