@@ -1,5 +1,16 @@
 " Configuration for Vim
 
+" Plugins
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'bkad/CamelCaseMotion'
+call vundle#end()
+filetype plugin indent on
+
 " File Handling
 set autoread                    " Reload buffer when file modified externally
 set clipboard=unnamed           " Yank and paste using system clipboard
@@ -67,6 +78,7 @@ set wildignore+=*.git,*.svn     " Ignore code repos
 
 " Line Wrapping
 set wrap                        " Wrap text
+
 set whichwrap+=<,>,h,l,[,]      " Have h, l wrap lines
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -132,9 +144,7 @@ nmap e b
 nmap E B
 
 " Double keys for esc, save, exit
-map ii <Esc>
 imap ii <Esc>
-cmap ii <ESC>
 nmap ss :w<CR>
 nmap qq :wq<CR>
 nmap cc :q!<CR>
