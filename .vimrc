@@ -16,8 +16,9 @@ set number                      " Line numbers on left
 set showcmd                     " Show command line at bottom of screen
 set cmdheight=1                 " Command Line Height
 " Skinny cursor when you are in insert mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 set laststatus=2                " Show Status Line Always
 
 " Whitespace and syntax
@@ -25,6 +26,8 @@ syntax on
 set textwidth=78
 set tabstop=4
 set shiftwidth=4
+" run `:set list` to show whitespace
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set bg=dark                     " Vi colors break if they don't know your background
 
 " Scrolling
@@ -71,14 +74,22 @@ map k gk
 
 " Split Screen
 set splitright                  " Place new window on the right
-nmap <C-w>s :vsplit<CR>
+nmap <C-w>e :vsplit<CR>
 nmap <C-w>w :split<CR>
+autocmd filetype netrw noremap <buffer> <C-w>e :vsplit<CR>
+autocmd filetype netrw noremap <buffer> <C-w>w :split<CR>
 
 " Tab management
 nmap <C-t>t :tabnew .<CR>
 nmap <C-t>c :tabclose<CR>
+nmap <C-t>l :tabnext<CR>
+nmap <C-t>h :tabprevious<CR>
 nmap tl :tabnext<CR>
 nmap th :tabprevious<CR>
+autocmd filetype netrw noremap <buffer> <C-t>l :tabnext<CR>
+autocmd filetype netrw noremap <buffer> <C-t>h :tabprev<CR>
+autocmd filetype netrw noremap <buffer> tl :tabnext<CR>
+autocmd filetype netrw noremap <buffer> th :tabprev<CR>
 
 " Modifier Keys
 set backspace=indent,eol,start
@@ -106,8 +117,10 @@ sunmap ge
 " Extending the power of the home row nav
 nnoremap J <C-D>
 nnoremap K <C-U>
-nnoremap H b
-nnoremap L w
+let g:go_doc_keywordprg_enabled = 0 " Turn off vim-go's K so the above works
+" Allow recursive mapping to get camelcase
+nmap H b
+nmap L w
 
 " Merge lines with +
 noremap + J
@@ -132,6 +145,8 @@ autocmd filetype netrw noremap <buffer> cc :q!<CR>
 map <S-Enter> O<Esc>j
 map <CR> o<Esc>k
 
-" A E beginning and end of line edits
+" Home/End A E beginning and end of line edits
 noremap A I
 noremap E A
+nmap <C-a> <Home>
+nmap <C-e> <End>
