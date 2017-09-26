@@ -14,6 +14,8 @@ alias gp='git rev-parse --abbrev-ref HEAD | xargs git pull'
 alias gpu='git rev-parse --abbrev-ref HEAD | xargs git push'
 alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | xargs hub compare'
 
+alias grep='grep --exclude="*.min.*" --exclude-dir=node_modules'
+
 # Common locations
 alias vimrc='vi ~/.vimrc'
 alias home='cd ~'
