@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'bkad/CamelCaseMotion'
+Plugin 'vim-scripts/camelcasemotion'
 call vundle#end()
 filetype plugin indent on
 
