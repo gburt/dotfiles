@@ -145,6 +145,7 @@ nmap E B
 
 " Double keys for esc, save, exit
 imap ii <Esc>
+vmap ii <Esc>
 nmap ss :w<CR>
 nmap qq :wq<CR>
 nmap cc :q!<CR>
