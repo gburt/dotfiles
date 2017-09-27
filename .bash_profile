@@ -1,6 +1,10 @@
 # Source bashrc
 [ -r $HOME/.bashrc ] && source $HOME/.bashrc
 
+# Add locally installed "global" npm packages to PATH
+export PATH="$HOME/.npm-packages/bin:$PATH"
+export MANPATH="$HOME/.npm-packages/share/man:$(manpath)"
+
 # Git Aliases
 alias g='git'
 alias gd='git diff'
