@@ -118,7 +118,7 @@ git_status() {
 	fi
 }
 
-PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%})❯ %{$reset_color%}'
+PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
