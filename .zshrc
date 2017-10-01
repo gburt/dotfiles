@@ -81,12 +81,10 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 # Keybindings
 # Take the common emacs ones then use vi bindings
-bindkey "^K"      kill-whole-line                      # ctrl-k
+bindkey "^Y"      kill-whole-line                      # ctrl-k but taken by pane movement
 bindkey "^R"      history-incremental-search-backward  # ctrl-r
 bindkey "^A"      beginning-of-line                    # ctrl-a  
 bindkey "^E"      end-of-line                          # ctrl-e
-bindkey "[B"      history-search-forward               # down arrow
-bindkey "[A"      history-search-backward              # up arrow
 bindkey "^D"      delete-char                          # ctrl-d
 bindkey "^F"      forward-char                         # ctrl-f
 bindkey "^B"      backward-char                        # ctrl-b
@@ -95,12 +93,6 @@ bindkey -v   # Default to standard vi bindings, regardless of editor string
 # Prompt
 autoload colors; colors
 setopt prompt_subst
-
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[green]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
