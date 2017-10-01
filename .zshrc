@@ -34,6 +34,7 @@ export LANG=en_US.UTF-8
 alias vimrc='vi ~/dotfiles/.vimrc'
 alias zshrc='vi ~/dotfiles/.zshrc'
 alias home='cd ~'
+alias dotfiles='cd ~/dotfiles'
 alias love='cd $HOME/go/src/github.com/DevotedHealth/core/'
 alias sandbox='cd $HOME/go/src/github.com/DevotedHealth/core/sandbox/$USER'
 alias backend='cd $HOME/go/src/github.com/DevotedHealth/core/backend'
@@ -118,7 +119,12 @@ git_status() {
 	fi
 }
 
-PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
+current_path() {
+	# Replace path with ~ and LOVE
+	echo "$(pwd | sed -e 's/\/home\/dchang/~/' -e 's/go\/src\/github.com\/DevotedHealth\/core/LOVE/')"
+}
+
+PROMPT='$(git_status)%{$fg[cyan]%}$(current_path)% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
