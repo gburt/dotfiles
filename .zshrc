@@ -91,6 +91,35 @@ bindkey "^F"      forward-char                         # ctrl-f
 bindkey "^B"      backward-char                        # ctrl-b
 bindkey -v   # Default to standard vi bindings, regardless of editor string
 
+# Prompt
+autoload colors; colors
+setopt prompt_subst
+
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[green]%}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}*%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+git_dirty() {
+	if ! command git diff-index --quiet HEAD 2> /dev/null; then
+		echo "*"
+	fi
+}
+
+git_status() {
+	local git_branch="$(git_branch)"
+	if [ -n "$git_branch" ]; then
+		echo "%{$fg[yellow]%}${git_branch}$(git_dirty) %{$reset_color%}"
+	fi
+}
+
+PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%})❯ %{$reset_color%}'
+
 ########################################################################
 # Vi
 
