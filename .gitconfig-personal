@@ -1,0 +1,9 @@
+[alias]
+    hash = rev-parse HEAD
+
+[push]
+    default = current
+
+[user]
+    name = Liyan David Chang
+    email = me@ldchang.com
