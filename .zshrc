@@ -32,7 +32,7 @@ export LANG=en_US.UTF-8
 
 # Common locations
 alias vimrc='vi ~/dotfiles/.vimrc'
-alias profile='vi ~/.bash_profile'
+alias zshrc='vi ~/dotfiles/.zshrc'
 alias home='cd ~'
 alias love='cd \$HOME/go/src/github.com/DevotedHealth/core/'
 alias sandbox='cd $HOME/go/src/github.com/DevotedHealth/core/sandbox/$USER'
