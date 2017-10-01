@@ -20,7 +20,7 @@ export EDITOR=vim
 export COMPOSE_PROJECT_NAME="\$USER"
 
 # Grep
-export GREP_OPTIONS='--color=auto --exclude="*.min.*" --exclude-dir=node_modules'
+alias grep='grep --color=auto --exclude="*.min.*" --exclude-dir=node_modules'
 export GREP_COLOR='3;33'
 
 # Language
@@ -34,7 +34,7 @@ export LANG=en_US.UTF-8
 alias vimrc='vi ~/dotfiles/.vimrc'
 alias zshrc='vi ~/dotfiles/.zshrc'
 alias home='cd ~'
-alias love='cd \$HOME/go/src/github.com/DevotedHealth/core/'
+alias love='cd $HOME/go/src/github.com/DevotedHealth/core/'
 alias sandbox='cd $HOME/go/src/github.com/DevotedHealth/core/sandbox/$USER'
 alias backend='cd $HOME/go/src/github.com/DevotedHealth/core/backend'
 alias frontend='cd $HOME/go/src/github.com/DevotedHealth/core/frontend/admin'
