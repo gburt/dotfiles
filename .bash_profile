@@ -8,7 +8,7 @@
 
 # Add locally installed "global" npm packages to PATH
 export PATH="$HOME/.npm-packages/bin:$PATH"
-export MANPATH="$HOME/.npm-packages/share/man:$(manpath)"
+export MANPATH=":$HOME/.npm-packages/share/man"
 
 ########################################################################
 # Aliases
