@@ -128,6 +128,15 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 alias vi='vim'
 
+
+########################################################################
+# Plugins
+
+# Zsh Autocomplete
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 ########################################################################
 # Tmux
 
