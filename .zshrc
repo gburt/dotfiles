@@ -6,12 +6,11 @@ export PATH="$HOME/.npm-packages/bin:$PATH"
 export MANPATH="$HOME/.npm-packages/share/man:$(manpath)"
 
 # Go Path
-export GOPATH="\$HOME/go"
-export PATH=\$PATH:/usr/local/go/bin
-export PATH="\$PATH:$\GOPATH/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
 # Node Path
-export PATH="\$PATH:/usr/local/node-v8.4.0-linux-x64/bin"
+export PATH="$PATH:/usr/local/node-v8.4.0-linux-x64/bin"
 export EDITOR=vim
 
 ########################################################################
