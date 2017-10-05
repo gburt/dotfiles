@@ -20,6 +20,17 @@ set noswapfile                  " Do not use a swap file for buffers
 set nowritebackup               " No backup files before overwriting file
 set nobackup                    " No backup files
 
+" Special File Types
+function! SetupEnvironment()
+  let l:path = expand('%:p')
+  if l:path =~ '/home/dchang/go/src/github.com/DevotedHealth/core/scripts/google-apps-script'
+	" Prettier specific settings for google apps script
+    let g:prettier#config#trailing_comma = 'none'
+  endif
+endfunction
+autocmd! BufReadPost,BufNewFile *.js call SetupEnvironment()
+
+
 " UI Settings
 set title                       " Let VI set the terminal title
 set titlelen=85                 " Cap the length of terminal title
