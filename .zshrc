@@ -17,7 +17,7 @@ export EDITOR=vim
 # User Settings
 
 # so all our users' 'docker-compose up' don't stomp on each other
-export COMPOSE_PROJECT_NAME="\$USER"
+export COMPOSE_PROJECT_NAME="$USER"
 
 # Grep
 alias grep='grep --color=auto --exclude="*.min.*" --exclude-dir=node_modules'
