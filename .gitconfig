@@ -1,6 +1,9 @@
 [alias]
     hash = rev-parse HEAD
 
+[branch]
+	autoSetupMerge = always
+
 [push]
     default = current
 
