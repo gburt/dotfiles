@@ -30,15 +30,20 @@ export LANG=en_US.UTF-8
 ########################################################################
 # Aliases
 
+# Named Directories
+hash -d love=$HOME/go/src/github.com/DevotedHealth/core
+
 # Common locations
 alias vimrc='vi ~/dotfiles/.vimrc'
 alias zshrc='vi ~/dotfiles/.zshrc'
 alias home='cd ~'
 alias dotfiles='cd ~/dotfiles'
-alias love='cd $HOME/go/src/github.com/DevotedHealth/core/'
-alias sandbox='cd $HOME/go/src/github.com/DevotedHealth/core/sandbox/$USER'
-alias backend='cd $HOME/go/src/github.com/DevotedHealth/core/backend'
-alias frontend='cd $HOME/go/src/github.com/DevotedHealth/core/frontend/admin'
+alias love='cd ~love'
+alias sandbox='cd ~love/sandbox/$USER'
+alias backend='cd ~love/backend'
+alias frontend='cd ~love/frontend/admin'
+alias setup='cd ~love/aws-infrastructure/account-dev/user-setup'
+
 
 # Directory
 alias ..='cd ..'
@@ -112,12 +117,7 @@ git_status() {
 	fi
 }
 
-current_path() {
-	# Replace path with ~ and LOVE
-	echo "$(pwd | sed -e 's/\/home\/dchang/~/' -e 's/go\/src\/github.com\/DevotedHealth\/core/LOVE/')"
-}
-
-PROMPT='$(git_status)%{$fg[cyan]%}$(current_path)% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
+PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
