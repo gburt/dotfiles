@@ -101,6 +101,7 @@ nmap <C-w>e :vsplit<CR>
 nmap <C-w>w :split<CR>
 autocmd filetype netrw noremap <buffer> <C-w>e :vsplit<CR>
 autocmd filetype netrw noremap <buffer> <C-w>w :split<CR>
+set diffopt+=vertical            " Always do a vimdiff vertical
 
 " Tab management
 nmap <C-t>t :tabnew .<CR>
@@ -155,8 +156,8 @@ nmap e b
 nmap E B
 
 " Double keys for esc, save, exit
-imap ii <Esc>
-vmap ii <Esc>
+imap ij <Esc>
+vmap ij <Esc>
 nmap ss :w<CR>
 nmap qq :wq<CR>
 nmap cc :q!<CR>
