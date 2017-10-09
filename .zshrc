@@ -69,7 +69,6 @@ alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | 
 
 # General
 setopt no_beep                           # don't beep on error
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # Case insensitive tab completion
 
 # Directories
 setopt auto_cd                           # cd without typing cd
@@ -118,7 +117,16 @@ git_status() {
 	fi
 }
 
-PROMPT='$(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
+# set VIMODE according to the current mode (default “[i]”)
+VIMODE='[i]'
+function zle-keymap-select {
+ VIMODE="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+ zle reset-prompt
+}
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+PROMPT='${VIMODE} $(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
@@ -132,10 +140,22 @@ alias vi='vim'
 ########################################################################
 # Plugins
 
-# Zsh Autocomplete
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Syntax Highlighting - must be installed before history substring
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Autocomplete
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # Case insensitive tab completion
+
+# History Substring Search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+
+
 
 ########################################################################
 # Tmux
@@ -144,3 +164,4 @@ source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 if [ -z "$TMUX" ]; then
 	tmux attach -t work || tmux new-session -s work
 fi
+
