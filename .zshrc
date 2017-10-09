@@ -69,6 +69,7 @@ alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | 
 
 # General
 setopt no_beep                           # don't beep on error
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # Case insensitive tab completion
 
 # Directories
 setopt auto_cd                           # cd without typing cd
