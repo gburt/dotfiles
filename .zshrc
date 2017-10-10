@@ -120,8 +120,8 @@ git_status() {
 # set VIMODE according to the current mode (default “[i]”)
 VIMODE='[i]'
 function zle-keymap-select {
- VIMODE="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
- zle reset-prompt
+	VIMODE="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+	zle reset-prompt
 }
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
@@ -159,6 +159,11 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 ########################################################################
 # Tmux
+
+# Set up a file for tmux to pick up my ssh agent
+if [ ! -z "$SSH_AUTH_SOCK" ]; then
+	ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
 
 # If not in a tmux session, attach or create a tmux session
 if [ -z "$TMUX" ]; then
