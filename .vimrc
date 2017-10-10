@@ -87,6 +87,9 @@ set wildignore+=*.so,*.swp      " Ignore swap files
 set wildignore+=*.zip,*.tar.gz  " Ignore compressed archives
 set wildignore+=*.git,*.svn     " Ignore code repos
 
+" Spelling
+set spelllang=en_us				" Default language
+
 " Line Wrapping
 set wrap                        " Wrap text
 
