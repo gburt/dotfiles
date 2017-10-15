@@ -44,7 +44,8 @@ alias frontend='cd $HOME/go/src/github.com/DevotedHealth/core/frontend/admin'
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\u \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]$ "
+# export PS1="\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 # Bash Completion
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
