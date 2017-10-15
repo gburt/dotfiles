@@ -160,14 +160,19 @@ bindkey -M vicmd 'j' history-substring-search-down
 ########################################################################
 # Tmux
 
-# If not in a tmux session, attach or create a tmux session
-if [ -z "$TMUX" ]; then
+# If not in a tmux or screen session
+if [ -z "$TMUX" ] && [ -z "$STY" ] && [ $TERM != "screen" ]; then
 
 	# Set up a file for tmux to pick up my ssh agent
 	if [ -n "$SSH_AUTH_SOCK" ]; then
 		ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 	fi
 
-	tmux attach -t work || tmux new-session -s work
+	# Start tmux (if they have a .tmux.conf) or screen (default)
+	if [ -e "$HOME/.tmux.conf" ]; then 
+		tmux attach -t work || tmux new-session -s work
+	else
+		screen -dRRS work
+	fi
 fi
 
