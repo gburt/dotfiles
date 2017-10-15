@@ -19,12 +19,13 @@ set hidden                      " Do not unload buffers that get hidden
 set noswapfile                  " Do not use a swap file for buffers
 set nowritebackup               " No backup files before overwriting file
 set nobackup                    " No backup files
+set autochdir                   " Automatically change the working directory
 
 " Special File Types
 function! SetupEnvironment()
   let l:path = expand('%:p')
-  if l:path =~ '/home/dchang/go/src/github.com/DevotedHealth/core/scripts/google-apps-script'
-	" Prettier specific settings for google apps script
+  if l:path =~ '/home/.*/go/src/github.com/DevotedHealth/core/tools/google-apps-script'
+    " Prettier specific settings for google apps script
     let g:prettier#config#trailing_comma = 'none'
   endif
 endfunction
@@ -88,7 +89,7 @@ set wildignore+=*.zip,*.tar.gz  " Ignore compressed archives
 set wildignore+=*.git,*.svn     " Ignore code repos
 
 " Spelling
-set spelllang=en_us				" Default language
+set spelllang=en_us             " Default language
 
 " Line Wrapping
 set wrap                        " Wrap text

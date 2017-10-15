@@ -164,7 +164,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 if [ -z "$TMUX" ]; then
 
 	# Set up a file for tmux to pick up my ssh agent
-	if [ ! -z "$SSH_AUTH_SOCK" ]; then
+	if [ -n "$SSH_AUTH_SOCK" ]; then
 		ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 	fi
 
