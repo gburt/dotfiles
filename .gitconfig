@@ -1,8 +1,9 @@
 [alias]
     hash = rev-parse HEAD
+    graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 
 [branch]
-	autoSetupMerge = always
+    autoSetupMerge = always
 
 [push]
     default = current
