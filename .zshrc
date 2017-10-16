@@ -62,6 +62,9 @@ alias gp='git rev-parse --abbrev-ref HEAD | xargs git pull'
 alias gpu='git rev-parse --abbrev-ref HEAD | xargs git push'
 alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | xargs hub compare'
 
+# Misc
+alias serve='SERVE_PORT=$(($RANDOM%2000 + 8000)); python -mSimpleHTTPServer $SERVE_PORT &; ngrok http $SERVE_PORT'
+
 ########################################################################
 # Zsh
 
