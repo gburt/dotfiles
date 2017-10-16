@@ -119,7 +119,8 @@ git_status() {
 	fi
 }
 
-# set VIMODE according to the current mode (default “[i]”)
+# set VIMODE according to the current mode
+# Enter vi mode with esc
 VIMODE='[i]'
 function zle-keymap-select {
 	VIMODE="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
@@ -128,7 +129,7 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
-PROMPT='${VIMODE} $(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}) ❯ %{$reset_color%}'
+PROMPT='${VIMODE}%(1j.[%j].) $(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%})❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
