@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vim-scripts/camelcasemotion'
+Plugin 'tpope/vim-surround'
 call vundle#end()
 filetype plugin indent on
 
