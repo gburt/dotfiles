@@ -65,10 +65,11 @@ set novisualbell                " No visual flash
 set t_vb=                       " Reset the visual bell code to nothing
 
 " Search Settings
-set ignorecase                  " ignore case when pattern matching
-set smartcase                   " only if all characters are lower case
-set incsearch                   " highlight matches while typing search
-set hlsearch                    " keep previous search highlighted
+set ignorecase                  " Ignore case when pattern matching
+set smartcase                   " Only if all characters are lower case
+set wildignorecase              " Ignore space in filenames
+set incsearch                   " Highlight matches while typing search
+set hlsearch                    " Keep previous search highlighted
 " Turn off highlighting of previous search
 noremap <C-n> :nohlsearch<CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
@@ -93,7 +94,6 @@ set spelllang=en_us             " Default language
 
 " Line Wrapping
 set wrap                        " Wrap text
-
 set whichwrap+=<,>,h,l,[,]      " Have h, l wrap lines
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -177,3 +177,16 @@ noremap A I
 noremap E A
 nmap <C-a> <Home>
 nmap <C-e> <End>
+
+" Paste mode when pasting
+" https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
