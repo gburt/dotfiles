@@ -11,7 +11,6 @@ export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
 # Node Path
 export PATH="$PATH:/usr/local/node-v8.4.0-linux-x64/bin"
-export EDITOR=vim
 
 ########################################################################
 # User Settings
@@ -44,7 +43,6 @@ alias backend='cd ~love/backend'
 alias frontend='cd ~love/frontend/admin'
 alias setup='cd ~love/aws-infrastructure/account-dev/user-setup'
 
-
 # Directory
 alias ..='cd ..'
 alias mkdir='mkdir -p'
@@ -68,14 +66,15 @@ alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | 
 # Zsh
 
 # General
-setopt no_beep                           # don't beep on error
+setopt no_beep                           # Don't beep on error
+mesg n                                   # Don't allow write/wall
 
 # Directories
 setopt auto_cd                           # cd without typing cd
 
 # History
-setopt append_history                    # Shared history between shells
-setopt extended_history                  # History includes timestamp & duration           
+setopt share_history                     # Shared history between shells
+setopt extended_history                  # History includes timestamp & duration
 setopt hist_ignore_all_dups              # Ignore all dups, not just previous cmd
 setopt hist_ignore_space                 # Ignore cmds that start with ' '
 setopt hist_reduce_blanks                # Whitespace cleanup in history
@@ -89,7 +88,7 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 # Take the common emacs ones then use vi bindings
 bindkey "^Y"      kill-whole-line                      # ctrl-k but taken by pane movement
 bindkey "^R"      history-incremental-search-backward  # ctrl-r
-bindkey "^A"      beginning-of-line                    # ctrl-a  
+bindkey "^A"      beginning-of-line                    # ctrl-a
 bindkey "^E"      end-of-line                          # ctrl-e
 bindkey "^D"      delete-char                          # ctrl-d
 bindkey "^F"      forward-char                         # ctrl-f
@@ -153,9 +152,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
-
-
 
 ########################################################################
 # Tmux
