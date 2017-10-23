@@ -12,6 +12,9 @@ export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 # Node Path
 export PATH="$PATH:/usr/local/node-v8.4.0-linux-x64/bin"
 
+# Add personal bin
+export PATH="$PATH:/$HOME/dotfiles/bin"
+
 ########################################################################
 # User Settings
 
