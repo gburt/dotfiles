@@ -49,6 +49,7 @@ alias setup='cd ~love/aws-infrastructure/account-dev/user-setup'
 # Directory
 alias ..='cd ..'
 alias mkdir='mkdir -p'
+alias ls='ls --color'
 
 # Git
 alias g='git'
