@@ -67,6 +67,7 @@ alias gpr='git rev-parse --abbrev-ref HEAD | awk '\''{print "master.."$1}'\'' | 
 
 # Misc
 alias serve='SERVE_PORT=$(($RANDOM%2000 + 8000)); python -mSimpleHTTPServer $SERVE_PORT &; ngrok http $SERVE_PORT'
+alias randpass='openssl rand -base64 32 | tr -d /=+ | cut -c -16 | tee >(clip)'
 
 ########################################################################
 # Zsh
