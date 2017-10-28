@@ -183,6 +183,8 @@ noremap A I
 noremap E A
 nmap <C-a> <Home>
 nmap <C-e> <End>
+imap <C-a> <Home>
+imap <C-e> <End>
 
 " Paste mode when pasting
 " https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
