@@ -1,5 +1,10 @@
 " Configuration for Vim
 
+" Source the devoted vimrc
+if !empty(glob("$HOME/.vimrc.devoted"))
+	source $HOME/.vimrc.devoted
+endif
+
 " Plugins
 set nocompatible
 filetype off
