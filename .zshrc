@@ -134,7 +134,7 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
-PROMPT='${VIMODE}%(1j.[%j].) $(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%})❯ %{$reset_color%}'
+PROMPT='${VIMODE}%(1j.[%j].) $(git_status)%{$fg[cyan]%}%~% %(?.%{$fg[white]%}.%{$fg[red]%}%?)❯ %{$reset_color%}'
 
 ########################################################################
 # Vi
