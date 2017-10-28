@@ -19,13 +19,21 @@ filetype plugin indent on
 
 " File Handling
 set autoread                    " Reload buffer when file modified externally
-set clipboard=unnamed           " Yank and paste using system clipboard
 set encoding=utf-8              " Default character encoding
 set hidden                      " Do not unload buffers that get hidden
 set noswapfile                  " Do not use a swap file for buffers
 set nowritebackup               " No backup files before overwriting file
 set nobackup                    " No backup files
 set autochdir                   " Automatically change the working directory
+
+" Clipboard
+" Our version of vim is compiled without clipboard support
+" vim --version | grep clipboard
+" So the following doesn't work
+" set clipboard=unnamed           " Yank and paste using system clipboard
+" The following almost works. The contents are properly sent over to clip but
+" the OSC52 sequnces don't seem to work
+" nmap yy :'>,'> !tee >(clip)<cr>
 
 " Special File Types
 function! SetupEnvironment()
