@@ -65,8 +65,24 @@ set cmdheight=1                 " Command Line Height
 let &t_SI = "\ePtmux;\e\e]50;CursorShape=1\x7\e\\"
 let &t_SR = "\ePtmux;\e\e]50;CursorShape=2\x7\e\\"
 let &t_EI = "\ePtmux;\e\e]50;CursorShape=0\x7\e\\"
+
+" Status Line
 set laststatus=2                " Show Status Line Always
-set statusline+=%F
+set statusline=%!StatusLine()
+function! StatusLine()
+	let statusline = ""
+    " Filename (F -> full, f -> relative)
+    let statusline .= "%f"
+    " Left/right separator
+    let statusline .= "%="
+    " Line & column
+    let statusline .= "%l,%c%V "
+    " File format and type
+    let statusline .= "(%{&ff}%(\/%Y%))"
+    " File progress
+    let statusline .= " | %P"
+    return statusline
+endfunction
 
 " Whitespace and syntax
 syntax on
