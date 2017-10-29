@@ -24,11 +24,14 @@ set hidden                      " Do not unload buffers that get hidden
 set noswapfile                  " Do not use a swap file for buffers
 set nowritebackup               " No backup files before overwriting file
 set nobackup                    " No backup files
-set autochdir                   " Automatically change the working directory
 
 " netrw file browser
 let g:netrw_banner=0            " No banner
 let g:netrw_liststyle=3         " Tree
+
+" Finding files
+set path+=**                    " Recursive search of all subdirectories
+set wildmenu                    " Tab complete menu when using :find
 
 " Clipboard
 " Our version of vim is compiled without clipboard support
@@ -63,6 +66,7 @@ let &t_SI = "\ePtmux;\e\e]50;CursorShape=1\x7\e\\"
 let &t_SR = "\ePtmux;\e\e]50;CursorShape=2\x7\e\\"
 let &t_EI = "\ePtmux;\e\e]50;CursorShape=0\x7\e\\"
 set laststatus=2                " Show Status Line Always
+set statusline+=%F
 
 " Whitespace and syntax
 syntax on
