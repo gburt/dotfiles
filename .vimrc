@@ -78,6 +78,10 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set fillchars=vert:│            " Less gap in the vertical split bar
 set bg=dark                     " Vi colors break if they don't know your background
 
+" Keep indent selection
+vmap < <gv
+vmap > >gv
+
 " Scrolling
 set scrolloff=3                 " Keep minimal number of lines above/below cursor
 set sidescroll=3                " Scroll sideways 3 characters at a time
