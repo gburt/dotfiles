@@ -67,6 +67,7 @@ set tabstop=4
 set shiftwidth=4
 " run `:set list` to show whitespace
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set fillchars=vert:│            " Less gap in the vertical split bar
 set bg=dark                     " Vi colors break if they don't know your background
 
 " Scrolling
@@ -86,11 +87,9 @@ set smartcase                   " Only if all characters are lower case
 set wildignorecase              " Ignore space in filenames
 set incsearch                   " Highlight matches while typing search
 set hlsearch                    " Keep previous search highlighted
-" Turn off highlighting of previous search
-noremap <C-n> :nohlsearch<CR>
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+" C-l to clear
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
 
 " History
 set viminfo="NONE"              " Don't store history in a long-lived file
