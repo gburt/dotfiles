@@ -26,6 +26,10 @@ set nowritebackup               " No backup files before overwriting file
 set nobackup                    " No backup files
 set autochdir                   " Automatically change the working directory
 
+" netrw file browser
+let g:netrw_banner=0            " No banner
+let g:netrw_liststyle=3         " Tree
+
 " Clipboard
 " Our version of vim is compiled without clipboard support
 " vim --version | grep clipboard
