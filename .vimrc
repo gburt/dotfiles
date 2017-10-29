@@ -55,9 +55,9 @@ set number                      " Line numbers on left
 set showcmd                     " Show command line at bottom of screen
 set cmdheight=1                 " Command Line Height
 " Skinny cursor when you are in insert mode
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+let &t_SI = "\ePtmux;\e\e]50;CursorShape=1\x7\e\\"
+let &t_SR = "\ePtmux;\e\e]50;CursorShape=2\x7\e\\"
+let &t_EI = "\ePtmux;\e\e]50;CursorShape=0\x7\e\\"
 set laststatus=2                " Show Status Line Always
 
 " Whitespace and syntax
@@ -198,8 +198,8 @@ imap <C-e> <End>
 
 " Paste mode when pasting
 " https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
+let &t_SI .= "\e[?2004h"
+let &t_EI .= "\e[?2004l"
 
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
