@@ -29,11 +29,13 @@ set autochdir                   " Automatically change the working directory
 " Clipboard
 " Our version of vim is compiled without clipboard support
 " vim --version | grep clipboard
-" So the following doesn't work
+" So the standard command below doesn't work
 " set clipboard=unnamed           " Yank and paste using system clipboard
-" The following almost works. The contents are properly sent over to clip but
-" the OSC52 sequnces don't seem to work
-" nmap yy :'>,'> !tee >(clip)<cr>
+" ~/.vim/plugin/osc52.vim from https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc/osc52.vim
+vmap <silent> <C-c> y:call SendViaOSC52(getreg('"'))<cr>
+" The screen flash is annoying enough so shouldn't take over yank
+" vnoremap y y:call SendViaOSC52(getreg('"'))<cr>
+" nnoremap yy yy:call SendViaOSC52(getreg('"'))<cr>
 
 " Special File Types
 function! SetupEnvironment()
